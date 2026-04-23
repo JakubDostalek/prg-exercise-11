@@ -3,9 +3,47 @@ import random
 def random_numbers(count, low=0, high=100):
     return [random.randint(low, high) for _ in range(count)]
 
+def selection_sort(seznam_start):
+    cisla = seznam_start.copy()
+    c = len(cisla)
+
+    for i in range(c):
+        index_min = i
+
+        for x in range(i + 1, c):
+            if cisla[x] < cisla[index_min]:
+                index_min = x
+
+        cisla[i], cisla[index_min] = cisla[index_min], cisla[i]
+
+    return cisla
+
+
+
+def bubble_sort(seznam_start):
+    cisla = seznam_start.copy()
+    c = len(cisla)
+
+    for i in range(c):
+        for j in range(c - i - 1):
+            if cisla[j] > cisla[j + 1]:
+
+                cisla[j], cisla[j + 1] = cisla[j + 1], cisla[j]
+
+    return cisla
 
 if __name__ == "__main__":
-    values = random_numbers(10)  # 10 čísel v rozsahu 0–100
-    print(values)  # např. [42, 7, 91, 15, 63, 8, 57, 73, 2, 100]
+    values = random_numbers(10)
+    print(f"začáteční seznam: {values}")
+    print(f"seřazené selection sort: {selection_sort(values)}")
+    print(f"seřazené bubble sort: {bubble_sort(values)}")
 
-    small = random_numbers(5, low=0, high=20)  # 5 čísel v rozsahu 0–20
+
+    test = [5, 1, 4, 2, 8]
+    print(test)
+
+    print(f"test selection sort: {selection_sort(test)}")
+    print(f"test bubble sort: {bubble_sort(test)}")
+
+    # small = random_numbers(5, low=0, high=20)  # 5 čísel v rozsahu 0–20
+    # print(selection_sort(random_numbers(14)))
