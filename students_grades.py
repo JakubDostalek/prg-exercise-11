@@ -9,9 +9,30 @@ class StudentsGrades:
         return len(self.scores)
 
 
+    def get_grade(self, index):
+        body = self.get_by_index(index)
+
+        if body >= 90:
+            return "A"
+        elif body >= 80:
+            return "B"
+        elif body >= 70:
+            return "C"
+        elif body >= 60:
+            return "D"
+        elif body >= 50:
+            return "E"
+        else:
+            return "F"
+
+
 if __name__ == "__main__":
     results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
 
     print(results.count())  # 9
     print(results.get_by_index(2))  # 91
     print(results.scores)  # [85, 42, 91, 67, 50, 73, 100, 38, 58]
+
+    print(results.get_grade(2))  # A (91 bodů)
+    print(results.get_grade(6))  # A (100 bodů)
+    print(results.get_grade(7))  # F (38 bodů)
